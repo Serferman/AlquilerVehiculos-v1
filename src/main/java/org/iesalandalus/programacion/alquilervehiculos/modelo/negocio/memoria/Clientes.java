@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio;
+package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria;
 
 import java.util.ArrayList;
 import java.util.List;

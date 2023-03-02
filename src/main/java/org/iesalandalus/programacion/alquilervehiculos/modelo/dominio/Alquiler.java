@@ -15,11 +15,11 @@ public class Alquiler {
 	private LocalDate fechaDevolucion;
 
 	private Cliente cliente;
-	private Turismo turismo;
+	private Vehiculo vehiculo;
 
-	public Alquiler(Cliente cliente, Turismo turismo, LocalDate fechaAlquiler) {
+	public Alquiler(Cliente cliente, Vehiculo vehiculo, LocalDate fechaAlquiler) {
 		setCliente(cliente);
-		setTurismo(turismo);
+		setVehiculo(vehiculo);
 		setFechaAlquiler(fechaAlquiler);
 	}
 
@@ -29,7 +29,7 @@ public class Alquiler {
 		}
 
 		setCliente(new Cliente(alquiler.getCliente()));
-		setTurismo(new Turismo(alquiler.getTurismo()));
+		setVehiculo(Vehiculo.copiar(alquiler.getVehiculo())); // Modificado
 		fechaAlquiler = alquiler.getFechaAlquiler();
 		fechaDevolucion = alquiler.getFechaDevolucion();
 	}
@@ -46,16 +46,16 @@ public class Alquiler {
 		this.cliente = cliente;
 	}
 
-	public Turismo getTurismo() {
-		return turismo;
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
 
-	private void setTurismo(Turismo turismo) {
-		if (turismo == null) {
-			throw new NullPointerException("ERROR: El turismo no puede ser nulo.");
+	private void setVehiculo(Vehiculo vehiculo) {
+		if (vehiculo == null) {
+			throw new NullPointerException("ERROR: El vehículo no puede ser nulo.");
 		}
 
-		this.turismo = turismo;
+		this.vehiculo = vehiculo;
 	}
 
 	public LocalDate getFechaAlquiler() {
@@ -107,13 +107,13 @@ public class Alquiler {
 
 	public int getPrecio() {
 		return (getFechaDevolucion() == null) ? 0
-				: (PRECIO_DIA + (getTurismo().getCilindrada() / 10))
+				: (PRECIO_DIA + (getVehiculo().getFactorPrecio()))
 						* (int) ChronoUnit.DAYS.between(getFechaAlquiler(), getFechaDevolucion());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cliente, fechaAlquiler, fechaDevolucion, turismo);
+		return Objects.hash(cliente, fechaAlquiler, fechaDevolucion, vehiculo);
 	}
 
 	@Override
@@ -126,7 +126,7 @@ public class Alquiler {
 			return false;
 		Alquiler other = (Alquiler) obj;
 		return Objects.equals(cliente, other.cliente) && Objects.equals(fechaAlquiler, other.fechaAlquiler)
-				&& Objects.equals(fechaDevolucion, other.fechaDevolucion) && Objects.equals(turismo, other.turismo);
+				&& Objects.equals(fechaDevolucion, other.fechaDevolucion) && Objects.equals(vehiculo, other.vehiculo);
 	}
 
 	@Override
@@ -134,10 +134,10 @@ public class Alquiler {
 		String cadena;
 
 		if (getFechaDevolucion() == null) {
-			cadena = String.format("%s <---> %s, %s - %s (%d€)", cliente, turismo,
+			cadena = String.format("%s <---> %s, %s - %s (%d€)", cliente, vehiculo,
 					getFechaAlquiler().format(FORMATO_FECHA), "Aún no devuelto", getPrecio());
 		} else {
-			cadena = String.format("%s <---> %s, %s - %s (%d€)", cliente, turismo,
+			cadena = String.format("%s <---> %s, %s - %s (%d€)", cliente, vehiculo,
 					getFechaAlquiler().format(FORMATO_FECHA), getFechaDevolucion().format(FORMATO_FECHA), getPrecio());
 		}
 

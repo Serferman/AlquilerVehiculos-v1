@@ -14,7 +14,7 @@ public class FurgonetaTest {
 	private static final String MENSAJE_ERROR_FORMATO_MARCA_NO_VALIDA = "ERROR: La marca no tiene un formato válido.";
 	private static final String MENSAJE_ERROR_MODELO_NULO = "ERROR: El modelo no puede ser nulo.";
 	private static final String MENSAJE_ERROR_MODELO_BLANCO = "ERROR: El modelo no puede estar en blanco.";
-	private static final String MENSAJE_ERROR_PMA_NO_VALIDO = "ERROR: El PMA no es correcto.";
+	private static final String MENSAJE_ERROR_PMA_NO_VALIDO = "ERROR: El PMA no es  correcto.";
 	private static final String MENSAJE_ERROR_PLAZAS_NO_VALIDAS = "ERROR: Las plazas no son correctas.";
 	private static final String MENSAJE_ERROR_MATRICULA_NULA = "ERROR: La matrícula no puede ser nula.";
 	private static final String MENSAJE_ERROR_FORMATO_MATRICULA_NO_VALIDA = "ERROR: La matrícula no tiene un formato válido.";
