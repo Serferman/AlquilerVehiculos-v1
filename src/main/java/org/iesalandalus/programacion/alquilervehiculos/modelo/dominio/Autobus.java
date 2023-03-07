@@ -19,8 +19,8 @@ public class Autobus extends Vehiculo {
 		return plazas;
 	}
 
-	private void setPlazas(int plazas) { //Preguntar si hay rango
-		if ((plazas != 60)) {
+	private void setPlazas(int plazas) {
+		if ((plazas < 7) || (plazas > 100)) {
 			throw new IllegalArgumentException("ERROR: Las plazas no son correctas.");
 		}
 		this.plazas = plazas;

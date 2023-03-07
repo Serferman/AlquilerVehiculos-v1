@@ -2,6 +2,7 @@ package org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.memoria;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
@@ -95,13 +96,18 @@ public class Alquileres implements IAlquileres {
 	}
 	
 	private Alquiler getAlquilerAbierto(Cliente cliente) {
-		Alquiler alquilerDevuelto = null;
-		for (Alquiler alquiler : coleccionAlquileres) {
-			if (alquiler.getCliente().equals(cliente)) {
-				alquilerDevuelto = alquiler;
+		Alquiler alquilerEncontrado = null;
+		Iterator<Alquiler> iterator = coleccionAlquileres.iterator();
+	
+		while (iterator.hasNext() && alquilerEncontrado == null) {
+			Alquiler alquilerRecorrido = iterator.next(); // 
+			
+			if (alquilerRecorrido.getCliente().equals(cliente) && alquilerRecorrido.getFechaDevolucion() == null) {
+				alquilerEncontrado = alquilerRecorrido;
 			}
 		}
-		return alquilerDevuelto;
+		
+		return alquilerEncontrado;
 	}
 	
 	public void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException {
@@ -117,13 +123,17 @@ public class Alquileres implements IAlquileres {
 	}
 
 	private Alquiler getAlquilerAbierto(Vehiculo vehiculo) {
-		Alquiler alquilerDevuelto = null;
-		for (Alquiler alquiler : coleccionAlquileres) {
-			if (alquiler.getVehiculo().equals(vehiculo)) {
-				alquilerDevuelto = alquiler;
+		Alquiler alquilerEncontrado = null;
+		Iterator<Alquiler> iterador = coleccionAlquileres.iterator();
+		
+		while (iterador.hasNext() && alquilerEncontrado == null) {
+			Alquiler alquilerRecorrido = iterador.next();
+			if (alquilerRecorrido.getVehiculo().equals(vehiculo)) {
+				alquilerEncontrado = alquilerRecorrido;
 			}
 		}
-		return alquilerDevuelto;
+		
+		return alquilerEncontrado;
 	}
 	
 	public void borrar(Alquiler alquiler) throws OperationNotSupportedException {

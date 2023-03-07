@@ -3,7 +3,7 @@ package org.iesalandalus.programacion.alquilervehiculos.modelo.dominio;
 public class Furgoneta extends Vehiculo {
 
 	private static final int FACTOR_PMA = 100;
-	private final static int FACTOR_PLAZAS = 1;
+	private static final int FACTOR_PLAZAS = 1;
 	private int pma;
 	private int plazas;
 	
@@ -23,9 +23,8 @@ public class Furgoneta extends Vehiculo {
 		return pma;
 	}
 	
-	// Preguntar mañana al profesor, tanto el rango como las 9 excepciones del test
 	public void setPma(int pma) {
-		if ((pma <=100) || (pma > 7000)) {
+		if ((pma <=100) || (pma > 10000)) {
 			throw new IllegalArgumentException("ERROR: El PMA no es  correcto.");
 		}
 		this.pma = pma;
@@ -36,7 +35,7 @@ public class Furgoneta extends Vehiculo {
 	}
 
 	private void setPlazas(int plazas) {
-		if ((plazas != 2)) {
+		if ((plazas < 2) || (plazas > 9)) {
 			throw new IllegalArgumentException("ERROR: Las plazas no son correctas.");
 		}
 		this.plazas = plazas;

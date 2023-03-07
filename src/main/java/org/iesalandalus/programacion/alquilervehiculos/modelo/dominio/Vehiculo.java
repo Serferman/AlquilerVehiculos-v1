@@ -10,8 +10,6 @@ public abstract class Vehiculo {
 	private String modelo;
 	private String matricula;
 
-	// Parte 9 primer ejecicio, llama a la clase "vehiculos" en vez de "vehiculo",
-	// tal y como esta en el diagrama de clases
 
 	protected Vehiculo(String marca, String modelo, String matricula) {
 		setMarca(marca);
@@ -52,7 +50,7 @@ public abstract class Vehiculo {
 		return marca;
 	}
 
-	protected void setMarca(String marca) {
+	private void setMarca(String marca) {
 		if (marca == null) {
 			throw new NullPointerException("ERROR: La marca no puede ser nula.");
 		}
@@ -67,7 +65,7 @@ public abstract class Vehiculo {
 		return modelo;
 	}
 
-	protected void setModelo(String modelo) {
+	private void setModelo(String modelo) {
 		if (modelo == null) {
 			throw new NullPointerException("ERROR: El modelo no puede ser nulo.");
 		}
@@ -83,7 +81,7 @@ public abstract class Vehiculo {
 		return matricula;
 	}
 
-	protected void setMatricula(String matricula) {
+	private void setMatricula(String matricula) {
 		if (matricula == null) {
 			throw new NullPointerException("ERROR: La matrícula no puede ser nula.");
 		}

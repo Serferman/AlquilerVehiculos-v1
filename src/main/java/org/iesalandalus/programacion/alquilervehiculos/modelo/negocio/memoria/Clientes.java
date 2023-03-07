@@ -6,8 +6,9 @@ import java.util.List;
 import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
+import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IClientes;
 
-public class Clientes {
+public class Clientes implements IClientes {
 
 	private List<Cliente> coleccionClientes;
 
@@ -15,14 +16,17 @@ public class Clientes {
 		coleccionClientes = new ArrayList<>();
 	}
 
+	@Override
 	public List<Cliente> get() {
 		return new ArrayList<>(coleccionClientes);
 	}
 
+	@Override
 	public int getCantidad() {
 		return coleccionClientes.size();
 	}
 
+	@Override
 	public void insertar(Cliente cliente) throws OperationNotSupportedException {
 		if (cliente == null) {
 			throw new NullPointerException("ERROR: No se puede insertar un cliente nulo.");
@@ -35,6 +39,7 @@ public class Clientes {
 		coleccionClientes.add(cliente);
 	}
 
+	@Override
 	public Cliente buscar(Cliente cliente) {
 		if (cliente == null) {
 			throw new NullPointerException("ERROR: No se puede buscar un cliente nulo.");
@@ -44,6 +49,7 @@ public class Clientes {
 		return (indice != -1) ? coleccionClientes.get(indice) : null;
 	}
 
+	@Override
 	public void borrar(Cliente cliente) throws OperationNotSupportedException {
 		if (cliente == null) {
 			throw new NullPointerException("ERROR: No se puede borrar un cliente nulo.");
@@ -56,6 +62,7 @@ public class Clientes {
 		coleccionClientes.remove(cliente);
 	}
 
+	@Override
 	public void modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException {
 		if (cliente == null) {
 			throw new NullPointerException("ERROR: No se puede modificar un cliente nulo.");
