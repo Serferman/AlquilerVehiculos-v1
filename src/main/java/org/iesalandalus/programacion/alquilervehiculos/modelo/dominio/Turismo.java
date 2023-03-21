@@ -2,11 +2,11 @@ package org.iesalandalus.programacion.alquilervehiculos.modelo.dominio;
 
 public class Turismo extends Vehiculo {
 
-	private int cilindrada;
 	private static final int FACTOR_CILINDRADA = 10;
-	
+	private int cilindrada;
+
 	public Turismo(String marca, String modelo, int cilindrada, String matricula) {
-		super(marca,modelo,matricula);
+		super(marca, modelo, matricula);
 		setCilindrada(cilindrada);
 	}
 
@@ -28,9 +28,9 @@ public class Turismo extends Vehiculo {
 
 	@Override
 	public int getFactorPrecio() {
-		return getCilindrada()/FACTOR_CILINDRADA;
+		return getCilindrada() / FACTOR_CILINDRADA;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("%s %s (%d cc) - %s", getMarca(), getModelo(), cilindrada, getMatricula());

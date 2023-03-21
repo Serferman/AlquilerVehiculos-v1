@@ -8,7 +8,6 @@ import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.Modelo;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Turismo;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
 import org.iesalandalus.programacion.alquilervehiculos.vista.Vista;
 
@@ -31,7 +30,7 @@ public class Controlador {
 	}
 
 	public void comenzar() {
-		modelo.comerzar();
+		modelo.comenzar();
 		vista.comenzar();
 	}
 
@@ -46,8 +45,8 @@ public class Controlador {
 		modelo.insertar(cliente);
 	}
 
-	public void insertar(Turismo turismo) throws OperationNotSupportedException {
-		modelo.insertar(turismo);
+	public void insertar(Vehiculo vehiculo) throws OperationNotSupportedException {
+		modelo.insertar(vehiculo);
 	}
 
 	public void insertar(Alquiler alquiler) throws OperationNotSupportedException {
@@ -58,8 +57,8 @@ public class Controlador {
 		return modelo.buscar(cliente);
 	}
 
-	public Vehiculo buscar(Vehiculo turismo) {
-		return modelo.buscar(turismo);
+	public Vehiculo buscar(Vehiculo vehiculo) {
+		return modelo.buscar(vehiculo);
 	}
 
 	public Alquiler buscar(Alquiler alquiler) {
@@ -70,16 +69,20 @@ public class Controlador {
 		modelo.modificar(cliente, nombre, telefono);
 	}
 
-	public void devolver(Alquiler alquiler, LocalDate fechaDevolucion) throws OperationNotSupportedException {
-		modelo.devolver(alquiler, fechaDevolucion);
+	public void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException {
+		modelo.devolver(cliente, fechaDevolucion);
+	}
+
+	public void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException {
+		modelo.devolver(vehiculo, fechaDevolucion);
 	}
 
 	public void borrar(Cliente cliente) throws OperationNotSupportedException {
 		modelo.borrar(cliente);
 	}
 
-	public void borrar(Vehiculo turismo) throws OperationNotSupportedException {
-		modelo.borrar(turismo);
+	public void borrar(Vehiculo vehiculo) throws OperationNotSupportedException {
+		modelo.borrar(vehiculo);
 	}
 
 	public void borrar(Alquiler alquiler) throws OperationNotSupportedException {
@@ -87,23 +90,23 @@ public class Controlador {
 	}
 
 	public List<Cliente> getClientes() {
-		return modelo.getClientes();
+		return modelo.getListaClientes();
 	}
 
-	public List<Turismo> getTurismos() {
-		return modelo.getTurismos();
+	public List<Vehiculo> getVehiculos() {
+		return modelo.getListaVehiculos();
 	}
 
 	public List<Alquiler> getAlquileres() {
-		return modelo.getAlquileres();
+		return modelo.getListaAlquileres();
 	}
 
 	public List<Alquiler> getAlquileres(Cliente cliente) {
-		return modelo.getAlquileres(cliente);
+		return modelo.getListaAlquileres(cliente);
 	}
 
-	public List<Alquiler> getAlquileres(Vehiculo turismo) {
-		return modelo.getAlquileres(turismo);
+	public List<Alquiler> getAlquileres(Vehiculo vehiculo) {
+		return modelo.getListaAlquileres(vehiculo);
 	}
 
 }

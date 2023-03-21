@@ -11,25 +11,25 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
 
 public interface IAlquileres {
 
-	public List<Alquiler> get();
+	List<Alquiler> get();
 
-	public List<Alquiler> get(Cliente cliente);
+	List<Alquiler> get(Cliente cliente);
 
-	public List<Alquiler> get(Vehiculo vehiculo); // ERROR DEL DIAGRAMA DE CLASES, en el parametro pasado
+	List<Alquiler> get(Vehiculo vehiculo);
 
-	public int getCantidad();
+	int getCantidad();
 
-	public void insertar(Alquiler alquiler) throws OperationNotSupportedException; // Si queremos que salte una
-																					// excepcion obligatoria en el
-																					// metodo que heradara una clase
-																					// hija, hay que definirlo en la
-																					// interfaz
+	void insertar(Alquiler alquiler) throws OperationNotSupportedException; // Si queremos que salte una
+																			// excepcion obligatoria en el
+																			// metodo que heradara una clase
+																			// hija, hay que definirlo en la
+																			// interfaz
 
-	public void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException;
+	void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException;
 
-	public void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException;
+	void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException;
 
-	public Alquiler buscar(Alquiler alquiler);
+	Alquiler buscar(Alquiler alquiler);
 
-	public void borrar(Alquiler alquiler) throws OperationNotSupportedException;
+	void borrar(Alquiler alquiler) throws OperationNotSupportedException;
 }

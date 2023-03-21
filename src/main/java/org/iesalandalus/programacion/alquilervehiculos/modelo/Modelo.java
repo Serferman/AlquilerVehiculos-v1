@@ -19,27 +19,27 @@ public abstract class Modelo {
 	private IAlquileres alquileres;
 	private IVehiculos vehiculos;
 	private IFuenteDatos fuenteDatos;
-	
+
 	protected IClientes getClientes() {
 		return clientes;
 	}
-	
+
 	protected IVehiculos getVehiculos() {
 		return vehiculos;
 	}
-	
+
 	protected IAlquileres getAlquileres() {
 		return alquileres;
 	}
-	
+
 	protected void setFuenteDatos(IFuenteDatos fuenteDatos) {
 		if (fuenteDatos == null) {
 			throw new NullPointerException("ERROR: La fuente de datos no puede ser nula.");
 		}
-		
+
 		this.fuenteDatos = fuenteDatos;
 	}
-	
+
 	public void comenzar() {
 		clientes = fuenteDatos.crearClientes();
 		vehiculos = fuenteDatos.crearVehiculos();
@@ -49,25 +49,26 @@ public abstract class Modelo {
 	public void terminar() {
 		System.out.println("AVISO: El modelo ha terminado");
 	}
-	
+
 	public abstract void insertar(Alquiler alquiler) throws OperationNotSupportedException;
 
 	public abstract void insertar(Vehiculo vehiculo) throws OperationNotSupportedException;
 
 	public abstract void insertar(Cliente cliente) throws OperationNotSupportedException;
-	
+
 	public abstract Alquiler buscar(Alquiler alquiler);
 
 	public abstract Vehiculo buscar(Vehiculo vehiculo);
 
 	public abstract Cliente buscar(Cliente cliente);
-	
+
 	public abstract void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException;
 
 	public abstract void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException;
-	
-	public abstract void modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException;
-	
+
+	public abstract void modificar(Cliente cliente, String nombre, String telefono)
+			throws OperationNotSupportedException;
+
 	public abstract void borrar(Alquiler alquiler) throws OperationNotSupportedException;
 
 	public abstract void borrar(Vehiculo vehiculo) throws OperationNotSupportedException;

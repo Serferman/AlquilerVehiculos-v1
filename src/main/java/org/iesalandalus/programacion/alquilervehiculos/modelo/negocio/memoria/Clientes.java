@@ -40,6 +40,26 @@ public class Clientes implements IClientes {
 	}
 
 	@Override
+	public void modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException {
+		if (cliente == null) {
+			throw new NullPointerException("ERROR: No se puede modificar un cliente nulo.");
+		}
+
+		if (!coleccionClientes.contains(cliente)) { // Si no contiene cliente la coleccion es verdadero
+			throw new OperationNotSupportedException("ERROR: No existe ningún cliente con ese DNI.");
+		}
+
+		if ((nombre != null) && (!nombre.isBlank())) {
+			buscar(cliente).setNombre(nombre);
+		}
+
+		if ((telefono != null) && (!telefono.isBlank())) {
+			buscar(cliente).setTelefono(telefono);
+		}
+
+	}
+
+	@Override
 	public Cliente buscar(Cliente cliente) {
 		if (cliente == null) {
 			throw new NullPointerException("ERROR: No se puede buscar un cliente nulo.");
@@ -60,26 +80,6 @@ public class Clientes implements IClientes {
 		}
 
 		coleccionClientes.remove(cliente);
-	}
-
-	@Override
-	public void modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException {
-		if (cliente == null) {
-			throw new NullPointerException("ERROR: No se puede modificar un cliente nulo.");
-		}
-
-		if (!coleccionClientes.contains(cliente)) { // Si no contiene cliente la coleccion es verdadero
-			throw new OperationNotSupportedException("ERROR: No existe ningún cliente con ese DNI.");
-		}
-
-		if ((nombre != null) && (!nombre.isBlank())) {
-			buscar(cliente).setNombre(nombre);
-		}
-
-		if ((telefono != null) && (!telefono.isBlank())) {
-			buscar(cliente).setTelefono(telefono);
-		}
-
 	}
 
 }

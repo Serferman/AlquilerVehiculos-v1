@@ -4,9 +4,9 @@ public class Autobus extends Vehiculo {
 
 	private static final int FACTOR_PLAZAS = 2;
 	private int plazas;
-	
+
 	public Autobus(String marca, String modelo, int plazas, String matricula) {
-		super(marca,modelo,matricula);
+		super(marca, modelo, matricula);
 		setPlazas(plazas);
 	}
 
@@ -28,9 +28,9 @@ public class Autobus extends Vehiculo {
 
 	@Override
 	public int getFactorPrecio() {
-		return getPlazas()* FACTOR_PLAZAS;
+		return getPlazas() * FACTOR_PLAZAS;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("%s %s (%d plazas) - %s", getMarca(), getModelo(), plazas, getMatricula());

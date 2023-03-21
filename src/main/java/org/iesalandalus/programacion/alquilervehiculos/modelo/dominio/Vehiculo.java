@@ -5,11 +5,10 @@ import java.util.Objects;
 public abstract class Vehiculo {
 
 	private static final String ER_MARCA = "[A-Z]+[a-z]*([ -]?[A-Z][a-z]+)*";
-	private static final String ER_MATRICULA = "[0-9]{4}[BCDFGHJKLMNPRSTVWXYZ]{3}";
+	private static final String ER_MATRICULA = "\\d{4}[BCDFGHJKLMNPRSTVWXYZ]{3}";
 	private String marca;
 	private String modelo;
 	private String matricula;
-
 
 	protected Vehiculo(String marca, String modelo, String matricula) {
 		setMarca(marca);
@@ -58,6 +57,7 @@ public abstract class Vehiculo {
 		if (!marca.matches(ER_MARCA)) {
 			throw new IllegalArgumentException("ERROR: La marca no tiene un formato válido.");
 		}
+
 		this.marca = marca;
 	}
 
@@ -89,6 +89,7 @@ public abstract class Vehiculo {
 		if (!matricula.matches(ER_MATRICULA)) {
 			throw new IllegalArgumentException("ERROR: La matrícula no tiene un formato válido.");
 		}
+
 		this.matricula = matricula;
 	}
 

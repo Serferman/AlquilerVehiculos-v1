@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Cliente {
 
-	private static final String ER_NOMBRE = "([A-Z]{1}[a-z]+)\\s?([A-Z]{1}[a-z]+\\s*)*";
-	private static final String ER_DNI = "[0-9]{8}[A-Z]";
-	private static final String ER_TELEFONO = "[0-9]{9}";
+	private static final String ER_NOMBRE = "([A-Z][a-z]+)\\s?([A-Z]{1}[a-z]+\\s*)*";
+	private static final String ER_DNI = "\\d{8}[A-Z]";
+	private static final String ER_TELEFONO = "\\d{9}";
 
 	private String nombre;
 	private String dni;
@@ -26,6 +26,10 @@ public class Cliente {
 		setNombre(cliente.getNombre());
 		setDni(cliente.getDni());
 		setTelefono(cliente.getTelefono());
+	}
+	
+	public static Cliente getClienteConDni(String dni) {
+		return new Cliente("Sergio", dni, "688913774");
 	}
 
 	public String getNombre() {
@@ -86,10 +90,6 @@ public class Cliente {
 			throw new IllegalArgumentException("ERROR: El teléfono no tiene un formato válido.");
 		}
 		this.telefono = telefono;
-	}
-
-	public static Cliente getClienteConDni(String dni) {
-		return new Cliente("Sergio", dni, "688913774");
 	}
 
 	@Override

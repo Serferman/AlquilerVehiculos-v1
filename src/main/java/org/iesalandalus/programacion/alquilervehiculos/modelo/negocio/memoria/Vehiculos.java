@@ -10,20 +10,20 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IVehiculos
 
 public class Vehiculos implements IVehiculos {
 
-	private List<Vehiculo> coleccionTurismos;
+	private List<Vehiculo> coleccionVehiculos;
 
 	public Vehiculos() {
-		coleccionTurismos = new ArrayList<>();
+		coleccionVehiculos = new ArrayList<>();
 	}
 
 	@Override
 	public List<Vehiculo> get() {
-		return new ArrayList<>(coleccionTurismos);
+		return new ArrayList<>(coleccionVehiculos);
 	}
-	
+
 	@Override
 	public int getCantidad() {
-		return coleccionTurismos.size();
+		return coleccionVehiculos.size();
 	}
 
 	@Override
@@ -32,11 +32,11 @@ public class Vehiculos implements IVehiculos {
 			throw new NullPointerException("ERROR: No se puede insertar un vehículo nulo.");
 		}
 
-		if (coleccionTurismos.contains(buscar(vehiculo))) {
+		if (coleccionVehiculos.contains(buscar(vehiculo))) {
 			throw new OperationNotSupportedException("ERROR: Ya existe un vehículo con esa matrícula.");
 		}
 
-		coleccionTurismos.add(vehiculo);
+		coleccionVehiculos.add(vehiculo);
 	}
 
 	@Override
@@ -44,8 +44,8 @@ public class Vehiculos implements IVehiculos {
 		if (vehiculo == null) {
 			throw new NullPointerException("ERROR: No se puede buscar un vehículo nulo.");
 		}
-		int indice = coleccionTurismos.indexOf(vehiculo);
-		return (indice != -1) ? coleccionTurismos.get(indice) : null;
+		int indice = coleccionVehiculos.indexOf(vehiculo);
+		return (indice != -1) ? coleccionVehiculos.get(indice) : null;
 	}
 
 	@Override
@@ -54,10 +54,10 @@ public class Vehiculos implements IVehiculos {
 			throw new NullPointerException("ERROR: No se puede borrar un vehículo nulo.");
 		}
 
-		if (!coleccionTurismos.contains(vehiculo)) {
+		if (!coleccionVehiculos.contains(vehiculo)) {
 			throw new OperationNotSupportedException("ERROR: No existe ningún vehículo con esa matrícula.");
 		}
-		coleccionTurismos.remove(vehiculo);
+		coleccionVehiculos.remove(vehiculo);
 	}
 
 }

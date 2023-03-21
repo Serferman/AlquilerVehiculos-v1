@@ -69,27 +69,27 @@ public class ModeloCascada extends Modelo {
 	public void modificar(Cliente cliente, String nombre, String telefono) throws OperationNotSupportedException {
 		getClientes().modificar(cliente, nombre, telefono);
 	}
-	
+
 	@Override
 	public void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException {
-		//cliente = getClientes().buscar(cliente);
+		// cliente = getClientes().buscar(cliente);
 
 		if (cliente == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el cliente que debe devolver.");
 		}
 
-		getAlquileres().devolver(cliente,fechaDevolucion);
+		getAlquileres().devolver(cliente, fechaDevolucion);
 	}
 
 	@Override
 	public void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException {
-		//vehiculo = getVehiculos().buscar(vehiculo);
+		// vehiculo = getVehiculos().buscar(vehiculo);
 
 		if (vehiculo == null) {
 			throw new OperationNotSupportedException("ERROR: No existe el vehiculo a devolver.");
 		}
 
-		getAlquileres().devolver(vehiculo,fechaDevolucion);
+		getAlquileres().devolver(vehiculo, fechaDevolucion);
 	}
 
 	@Override
@@ -114,9 +114,9 @@ public class ModeloCascada extends Modelo {
 	}
 
 	@Override
-	public List<Alquiler> getListaAlquileres(Vehiculo turismo) {
+	public List<Alquiler> getListaAlquileres(Vehiculo vehiculo) {
 		ArrayList<Alquiler> alquilerArray = new ArrayList<>();
-		for (Alquiler alquilerAux : getAlquileres().get(turismo)) {
+		for (Alquiler alquilerAux : getAlquileres().get(vehiculo)) {
 			alquilerArray.add(new Alquiler(alquilerAux));
 		}
 		return alquilerArray;

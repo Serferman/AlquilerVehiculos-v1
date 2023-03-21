@@ -68,7 +68,8 @@ public class Alquileres implements IAlquileres {
 				if (alquiler.getCliente().equals(cliente)) {
 					throw new OperationNotSupportedException("ERROR: El cliente tiene otro alquiler sin devolver.");
 				} else if (alquiler.getVehiculo().equals(vehiculo)) {
-					throw new OperationNotSupportedException("ERROR: El turismo está actualmente alquilado."); // MENSAJE DE ERROR INVALIDO, no es un turismo, es un vehiculo.
+					throw new OperationNotSupportedException("ERROR: El turismo está actualmente alquilado.");
+					// MENSAJE DE ERROR INVALIDO, no es un turismo, es un vehiculo.
 				}
 			} else {
 				// Devueltos
@@ -77,7 +78,8 @@ public class Alquileres implements IAlquileres {
 					throw new OperationNotSupportedException("ERROR: El cliente tiene un alquiler posterior.");
 				} else if ((alquiler.getVehiculo().equals(vehiculo))
 						&& (alquiler.getFechaDevolucion().compareTo(fechaAlquiler) >= 0)) {
-					throw new OperationNotSupportedException("ERROR: El turismo tiene un alquiler posterior."); // MENSAJE DE ERROR INVALIDO, no es un turismo, es un vehiculo.
+					throw new OperationNotSupportedException("ERROR: El turismo tiene un alquiler posterior.");
+					// MENSAJE DE ERROR INVALIDO, no es un turismo, es un vehiculo.
 				}
 			}
 		}
@@ -87,29 +89,29 @@ public class Alquileres implements IAlquileres {
 		if (cliente == null) {
 			throw new NullPointerException("ERROR: No se puede devolver un alquiler de un cliente nulo.");
 		}
-		
+
 		Alquiler alquiler = getAlquilerAbierto(cliente);
 		if (alquiler == null) {
 			throw new OperationNotSupportedException("ERROR: No existe ningún alquiler abierto para ese cliente.");
 		}
 		alquiler.devolver(fechaDevolucion);
 	}
-	
+
 	private Alquiler getAlquilerAbierto(Cliente cliente) {
 		Alquiler alquilerEncontrado = null;
 		Iterator<Alquiler> iterator = coleccionAlquileres.iterator();
-	
+
 		while (iterator.hasNext() && alquilerEncontrado == null) {
-			Alquiler alquilerRecorrido = iterator.next(); // 
-			
+			Alquiler alquilerRecorrido = iterator.next(); //
+
 			if (alquilerRecorrido.getCliente().equals(cliente) && alquilerRecorrido.getFechaDevolucion() == null) {
 				alquilerEncontrado = alquilerRecorrido;
 			}
 		}
-		
+
 		return alquilerEncontrado;
 	}
-	
+
 	public void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException {
 		if (vehiculo == null) {
 			throw new NullPointerException("ERROR: No se puede devolver un alquiler de un vehículo nulo.");
@@ -125,17 +127,17 @@ public class Alquileres implements IAlquileres {
 	private Alquiler getAlquilerAbierto(Vehiculo vehiculo) {
 		Alquiler alquilerEncontrado = null;
 		Iterator<Alquiler> iterador = coleccionAlquileres.iterator();
-		
+
 		while (iterador.hasNext() && alquilerEncontrado == null) {
 			Alquiler alquilerRecorrido = iterador.next();
 			if (alquilerRecorrido.getVehiculo().equals(vehiculo)) {
 				alquilerEncontrado = alquilerRecorrido;
 			}
 		}
-		
+
 		return alquilerEncontrado;
 	}
-	
+
 	public void borrar(Alquiler alquiler) throws OperationNotSupportedException {
 		if (alquiler == null) {
 			throw new NullPointerException("ERROR: No se puede borrar un alquiler nulo.");
